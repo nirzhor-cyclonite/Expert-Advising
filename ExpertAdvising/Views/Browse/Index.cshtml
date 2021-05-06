@@ -1,0 +1,210 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet2" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+    <link href="~/css/shared.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/home.css" rel="stylesheet" type="text/css" />
+
+
+    <link href="~/css/Hover.css" rel="stylesheet" />
+    <!--<link href="~/css/user_reg.css" rel="stylesheet" />-->
+    <script src="~/Scripts/main.js"></script>
+
+
+
+
+
+</head>
+
+<body>
+    <!--browsing start-->
+
+
+            @{
+                string architecture = Convert.ToString(ViewBag.architecture);
+                string finance = Convert.ToString(ViewBag.finance);
+                string law = Convert.ToString(ViewBag.law);
+
+                string medical = Convert.ToString(ViewBag.medical);
+                string software = Convert.ToString(ViewBag.software);
+                string textile = Convert.ToString(ViewBag.textile);
+            }
+    
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-body">
+                    <div class="hovereffect">
+                        <img src="~/images/BrowsePageImages/Architecture.jpg" />/>
+                        <div style="width: 100%; height: 300px; position: absolute; overflow: hidden;top: 0;left: 0;padding: 50px 20px;">
+                            <p>
+                                <label style="color:white">Architecture</label><br>
+                            </p>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="title"><a href=@Url.Action("Architecture", "Browse")>Architecture</a></div>
+                    <div class="chapter">
+                        <h5 style="color:black">Experts in this Sector: @architecture</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-body">
+                    <div class="hovereffect">
+                        <img src="~/images/BrowsePageImages/Finance.jpg" />
+                        <div style="width: 100%; height: 300px; position: absolute; overflow: hidden;top: 0;left: 0;padding: 50px 20px;">
+                            <p>
+                                <label style="color:white">Finance</label><br>
+                            </p>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="title"><a href=@Url.Action("Finance", "Browse")>Finance</a></div>
+                    <div class="chapter">
+                        <h5 style="color:black">Experts in this Sector: @finance</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-body">
+                    <div class="hovereffect">
+                        <img src="~/images/BrowsePageImages/Law.jpg" />
+                        <div style="width: 100%; height: 300px; position: absolute; overflow: hidden;top: 0;left: 0;padding: 50px 20px;">
+                            <p>
+                                <label style="color:white">Law</label><br>
+                            </p>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="title"><a href=@Url.Action("Law", "Browse")>Law</a></div>
+                    <div class="chapter">
+                        <h5 style="color:black">Experts in this Sector: @law</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 30px">
+            <div class="col-md-4">
+                <div class="card-body">
+                    <div class="hovereffect">
+                        <img src="~/images/BrowsePageImages/Doctor.jpg" />
+                        <div style="width: 100%; height: 300px; position: absolute; overflow: hidden;top: 0;left: 0;padding: 50px 20px;">
+                            <p>
+                                <label style="color:white">Medical</label><br>
+                            </p>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="title"><a href=@Url.Action("Medical", "Browse")>Medical</a></div>
+                    <div class="chapter">
+                        <h5 style="color:black">Experts in this Sector: @medical</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-body">
+                    <div class="hovereffect">
+                        <img src="~/images/BrowsePageImages/Software.jpg" />
+                        <div style="width: 100%; height: 300px; position: absolute; overflow: hidden;top: 0;left: 0;padding: 50px 20px;">
+                            <p>
+                                <label style="color:white">Software and IT</label><br>
+                            </p>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="title"><a href=@Url.Action("Software", "Browse")>Software</a></div>
+                    <div class="chapter">
+                        <h5 style="color:black">Experts in this Sector:@software</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-body">
+                    <div class="hovereffect">
+                        <img src="~/images/BrowsePageImages/Textile.jpg" />
+                        <div style="width: 100%; height: 300px; position: absolute; overflow: hidden;top: 0;left: 0;padding: 50px 20px;">
+                            <p>
+                                <label style="color:white">Textile</label><br>
+                            </p>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="title"><a href=@Url.Action("Textile", "Browse")>Textile</a></div>
+                    <div class="chapter">
+                        <h5 style="color:black">Experts in this Sector:@textile</h5>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="~/Scripts/jqBootstrapValidation.js"></script>
+    <script src="~/Scripts/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+
+    <script src="~/Scripts/home.js"></script>
+    <script src="~/Scripts/home.min.js"></script>
+
+    <script src="~/Scripts/gulpfile.js"></script>
+
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+    <!--sidenav js-->
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Sidenav.js"></script>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

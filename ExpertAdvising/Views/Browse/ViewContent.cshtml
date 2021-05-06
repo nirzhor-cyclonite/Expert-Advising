@@ -1,0 +1,84 @@
+﻿@model trial7.Models.QueryHandler
+@{    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Expert Advising</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+    <!--Side Nav css-->
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <h2>Blogs</h2>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+
+                <!--<embed src="~/Contents/Report 3 (Use Case Diagrams).pdf" type="application/pdf" width="475px" height="610px" />-->
+                <embed src="@Url.Content(Model.currentContent.Item)" type="application/pdf" width="475px" height="610px" />
+
+            </div>
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Content No</th>
+                            <th scope="col">Content Name</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.ContentList.Count; i++)
+                        {
+                            <tr>
+                                @{
+                                    var contentid = Model.ContentList[i].ContentId;
+                                }
+                                <th scope="row">@(i+1)</th>
+                                <td><a href="@Url.Action("ViewContent", "Browse", new {@id = contentid})">@Model.ContentList[i].Topic</a></td>
+
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+

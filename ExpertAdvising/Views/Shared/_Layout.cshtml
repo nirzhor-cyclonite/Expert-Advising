@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet2" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+    <link href="~/css/shared.css" rel="stylesheet" type="text/css" />
+    <style>
+                .dropbtn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            
+        }
+
+        .dd {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dd-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dd-content a {
+                color: black;
+                padding:12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dd-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dd:hover .dd-content {
+            display: block;
+        }
+
+        .dd:hover .dropbtn {
+            background-color: dimgray;
+        
+        }
+
+        .bar {
+            width: 25px;
+            height: 4px;
+            background-color: white;
+            margin: 2px 0;
+            border-radius:50px;
+            }
+        .bar-ar:hover{
+            background-color:black;
+        }
+
+
+        input[type="submit"] {
+            font-family: FontAwesome;
+            height: 40px;
+            width: 50px;
+            background-color: white;
+            margin-bottom: 4px;
+            border: none;
+            color: black;
+        }
+
+            input[type="submit"]:hover {
+                color: white;
+                background-color: black;
+            }
+    </style>
+
+
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <div id="logo">
+            <a href=@Url.Action("Index","Home") class="active">
+                <img src="~/images/logo.jpg" style="width:55px; height:55px; border-radius:50%; margin-top:5px;" />
+            </a>
+        </div>
+
+
+        <div class="dropdown">
+
+            <a href="@Url.Action("Index","Home")">
+                <button class="dropbtn">
+                    Home
+                </button>
+            </a>
+        </div>
+
+
+        <div class="dropdown">
+            <a href="@Url.Action("Index","Browse")">
+                <button class="dropbtn">
+                    Browse
+                </button>
+            </a>
+        </div>
+
+
+
+        <div class="search-container">
+
+            @using (Html.BeginForm("Search", "Search", FormMethod.Post, new { encType = "multipart/form-data" }))
+            {
+                <input type="text" placeholder="Search.." name="id">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+
+            }
+
+        </div>
+
+
+        <!--<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>-->
+        <!--<div class="dropdown">-->
+
+        @if (Session["user"] == null)
+        {
+            <div class="dropdown">
+
+                <a href="@Url.Action("Register", "User")">
+                    <button class="dropbtn">
+                        Sign Up
+                    </button>
+                </a>
+            </div>
+
+
+            <div class="dropdown">
+                <a href="@Url.Action("Login", "User")">
+                    <button class="dropbtn">
+                        Log In
+                    </button>
+                </a>
+            </div>
+        }
+
+        else
+        {
+            if (Session["expert"] == null)
+            {
+                <div class="dropdown">
+                    <a href="@Url.Action("My_Profile", "Profile")">
+                        <button class="dropbtn">
+                            My Profile
+                        </button>
+                    </a>
+                </div>
+                <div class="dropdown">
+                    <a href="@Url.Action("Logout", "Profile")">
+                        <button class="dropbtn">
+                            Log Out
+                        </button>
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="dropdown">
+                    <a href="@Url.Action("MyProfile", "Expert")">
+                        <button class="dropbtn">
+                            My Profile
+                        </button>
+                    </a>
+                </div>
+                <div class="dropdown">
+                    <a href="@Url.Action("Logout", "Expert")">
+                        <button class="dropbtn">
+                            Log Out
+                        </button>
+                    </a>
+                </div>
+            }
+
+
+        }
+    </div>
+
+
+    <!-- </div>-->
+    @if (Session["user"] != null)
+    {
+        if (Session["expert"] == null)
+        {
+            <div class="dd">
+                <button class="dropbtn">
+                    <div class="bar-ar">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </button>
+
+                <div class="dd-content">
+                    <a href=@Url.Action("My_Profile", "Profile")>My Profile</a>
+                    <a href=@Url.Action("Edit_Profile", "Profile")>Edit Profile</a>
+                    <a href=@Url.Action("PendingSessions", "Profile")>Pending Sessions</a>
+                    <a href=@Url.Action("UpcomingSessions", "Profile")>Upcoming Sessions</a>
+                    <a href=@Url.Action("CompletedSessions", "Profile")>Completed Sessions</a>
+                    <a href=@Url.Action("Logout", "Profile")>Log Out</a>
+                </div>
+
+
+            </div>
+        }
+        else
+        {
+            <div class="dd">
+                <button class="dropbtn">
+                    <div class="bar-ar">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </button>
+
+                <div class="dd-content">
+                    <a href=@Url.Action("MyProfile", "Expert")>My Profile</a>
+                    <a href=@Url.Action("EditProfile", "Expert")>Edit Profile</a>
+                    <a href=@Url.Action("Calendar", "ExpertCalendar")>Schedule Free Time</a>
+                    <a href=@Url.Action("PendingRequest", "Expert")>Pending Sessions</a>
+                    <a href=@Url.Action("UpcomingSession", "Expert")>Upcoming Sessions</a>
+                    <a href=@Url.Action("CompletedSession", "Expert")>Completed Sessions</a>
+                    <a href=@Url.Action("UploadContent", "Expert")>Upload Content</a>
+                    <a href=@Url.Action("Logout", "Expert")>Log Out</a>
+                </div>
+
+
+            </div>
+        }
+    }
+    @RenderBody()
+
+    <br />
+    <br />
+    <br />
+
+    <div class="footercontainer" style="background-color:#333;width:100%;color:white">
+        <div class="row" style="opacity:0.8">
+            <div class="col-sm-4">
+                <br />
+                <p>All Blogs, Contents are © to their respective copyright holders</p>
+
+            </div>
+            <div class="col-sm-4">
+                <br />
+                <p> © 2010-2019 www.experadvising.com. An Investment in Knowledge at www.expertadvising.com. </p>
+
+            </div>
+            <div class="col-sm-4">
+                <br />
+                <p><a style="color:white">Expert Advising</a>| <a style="color:white">Home</a> | <a style="color:white">Latest Updates</a> | <a style="color:white">Contact Us</a> | <a style="color:white">Privacy Policy</a> | <a style="color:white">Terms of Service</a></p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery-1.12.4.min.js">\x3C/script>')</script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</body>
+</html>

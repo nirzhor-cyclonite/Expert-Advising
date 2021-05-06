@@ -1,0 +1,117 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+    <style>
+
+        .container {
+            margin-top: 40px;
+        }
+
+        .firstSection {
+            width: 150px;
+            height: 150px;
+        }
+
+            .firstSection img {
+                width: 100%;
+                height: auto;
+                border-radius: 50%;
+            }
+
+        .thirdSection {
+            text-align: center;
+        }
+
+            .thirdSection .price, .thirdSection .callButton {
+                padding-bottom: 15px;
+            }
+
+                .thirdSection .callButton button {
+                    width: 200px;
+                }
+
+        .border {
+            margin-top: 30px;
+            border-bottom: 2px solid #6f6f6f;
+        }
+
+
+    </style>
+    </head>
+
+    <body style="margin-top:100px;">
+
+        <div class="container">
+
+            <div class="row">
+
+
+                <div class="col-md-3 firstSection">
+                    <img src="~/img/pp.jpg" />
+                </div>
+                <div class="col-md-6 secondSection">
+
+                    <h2>Nirzhor</h2>
+                    <p>
+                        Nirzhor akta nirzhor. Nirzhor akta nirzhor. Nirzhor akta nirzhor. Nirzhor akta nirzhor.
+                        Nirzhor akta nirzhor. Nirzhor akta nirzhor. Nirzhor akta nirzhor.Nirzhor akta nirzhor.
+                        Nirzhor akta nirzhor.Nirzhor akta nirzhor.Nirzhor akta nirzhor.Nirzhor akta nirzhor.
+                        Nirzhor akta nirzhor.Nirzhor akta nirzhor.Nirzhor akta nirzhor.Nirzhor akta nirzhor.
+                    </p>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="row thirdSection">
+
+                        <div class="col-md-12 price">
+                            <div style="font-weight:bold">$2</div>
+                            <div>per minute</div>
+                        </div>
+
+                        <div class="col-md-12 callButton">
+                            <button type="button" class="btn btn-success">Request a Call</button>
+                        </div>
+
+                        <div class="col-md-12 rating">
+
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <i class="fa fa-star"> 4.9</i>
+                                </div>
+                                <div class="col-sm-4">
+                                    <i class="fa fa-phone"> 73</i>
+                                </div>
+                                <div class="col-sm-4">
+                                    <i class="fa fa-comments"> 33</i>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="border"></div>
+    </body>
+</html>

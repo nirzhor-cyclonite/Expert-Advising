@@ -1,0 +1,109 @@
+﻿@model trial7.Models.QueryHandler
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <link href='~/calender/fullcalendar/packages/core/main.css' rel='stylesheet' />
+    <link href='~/calender/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+    <link href='~/calender/fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
+    <script src='~/calender/fullcalendar/packages/core/main.js'></script>
+    <script src='~/calender/fullcalendar/packages/interaction/main.js'></script>
+    <script src='~/calender/fullcalendar/packages/daygrid/main.js'></script>
+    <script src='~/calender/fullcalendar/packages/timegrid/main.js'></script>
+    <script>
+        var array = @Html.Raw(Json.Encode(@ViewBag.bookedDate));
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['interaction', 'dayGrid'],
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                defaultDate: '2019-10-07',
+                navLinks: true, // can click day/week names to navigate views
+                selectable: true,
+                navLinkDayClick: function (date, jsEvent) {
+                    console.log('day', date.toISOString());
+                    console.log('coords', jsEvent.pageX, jsEvent.pageY);
+
+                },
+
+                events: [
+                @for(int i=0; i<Model.CalendarList.Count; i++)
+                {
+                       @:{
+                            @: start: ('@Model.CalendarList[i].StartingFrom.Date.ToString("yyyy-MM-dd")'),
+                            @: end: ('@Model.CalendarList[i].EndingAt.Date.ToString("yyyy-MM-dd")'),
+                            @: rendering: 'background'
+                       @:}
+                       if (i != (Model.CalendarList.Count-1)) {
+                        @:,
+                    }
+                    else
+                    {
+                        @:
+                    }
+                }
+
+                ],
+
+                navLinkDayClick: function (date, jsEvent) {
+                    var clickedDate = new Date(date);
+								var ddc = String(clickedDate.getDate()).padStart(2, '0');
+								var mmc = String(clickedDate.getMonth() + 1).padStart(2, '0');
+								var yyyyc = clickedDate.getFullYear();
+								clickedDate = ddc + '/' + mmc + '/' + yyyyc;
+
+                    var check = true;
+                    for (var i = 0; i < array.length; i++) {
+											var b = array[i]['BookingDate'].split('/');
+						if (b[0] == ddc && b[1] == mmc && b[2] == yyyyc) {
+							check = false;
+							break;
+						}
+                    }
+
+                    if (check == true) {
+
+                        var url = '@Url.Action("FreeTimeDetails", "ExpertCalendar", new {date = "__date__"})';
+                        window.location.href = url.replace('__date__', clickedDate);
+                    }
+                    else {
+
+						alert("This date is alredy vacant");
+                    }
+
+                }
+
+            });
+
+            calendar.render();
+        });
+
+    </script>
+    <style>
+
+
+
+        #calendar {
+            height: 400px;
+            width: 550px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id='calendar'></div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+﻿@model trial7.Models.Booking
+@{
+    ViewBag.Title = "BookingDetails";
+}
+
+<style>
+    .form-control {
+        width: 300px;
+    }
+
+    textarea {
+        resize: both;
+        max-width: 550px;
+        min-width: 300px;
+        max-height: 300px;
+        min-height: 100px;
+    }
+</style>
+
+
+@using (Html.BeginForm("BookingDetails","Booking", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    string date = Convert.ToString(ViewBag.date);
+    string freeTime = Convert.ToString(ViewBag.startTime) + " - "+ Convert.ToString(ViewBag.endTime);
+
+    <div class="form-horizontal">
+        <!--<h4>book</h4>-->
+        <hr />
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Label("date", date , htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.startTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Label("time", freeTime, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.selectedHour, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach (var item in ViewBag.availableHouse)
+                {
+                    int num = Convert.ToInt32(item);
+                    @Html.RadioButtonFor(model => model.selectedHour, num)
+
+                    @Html.Label(Convert.ToString(num))
+                    <br/>
+                }
+                @Html.ValidationMessageFor(model => model.selectedHour, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.durationInMinutes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.durationInMinutes, 15)
+                @Html.Label(Convert.ToString(15))
+
+                @Html.RadioButtonFor(model => model.durationInMinutes, 30)
+                @Html.Label(Convert.ToString(30))
+
+                @Html.RadioButtonFor(model => model.durationInMinutes, 45)
+                @Html.Label(Convert.ToString(45))
+
+                @Html.RadioButtonFor(model => model.durationInMinutes, 60)
+                @Html.Label(Convert.ToString(60))
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.topic, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.topic, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.topic, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.briefDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.briefDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.briefDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,283 @@
+﻿@model trial7.Models.QueryHandler
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Expert Advising</title>
+
+
+    <link href="~/css/My_profile.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+    <!--Side Nav css-->
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+
+    <!--Hover Nav Bar-->
+    <style>
+        .dropbtn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dd {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dd-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dd-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dd-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dd:hover .dd-content {
+            display: block;
+        }
+
+        .dd:hover .dropbtn {
+            background-color: dimgray;
+        
+        }
+
+        .bar {
+            width: 25px;
+            height: 4px;
+            background-color: white;
+            margin: 2px 0;
+            border-radius:50px;
+            }
+        .bar-ar:hover{
+            background-color:black;
+        }
+ 
+    </style>
+
+
+</head>
+<body>
+    <!--SideNav-->
+    <!--SideNavend-->
+
+
+
+    <div class="wrapper">
+        
+        <!--div class="dd">
+       <button class="dropbtn">
+           <div class="bar-ar">
+               <div class="bar"></div>
+               <div class="bar"></div>
+               <div class="bar"></div>
+           </div>
+       </button>
+       <div class="dd-content">
+           <a href=@Url.Action("My_Profile","Profile")>My Profile</a>
+           <a href=@Url.Action("Edit_Profile", "Profile")>Edit Profile</a>
+           <a href=@Url.Action("UpcomingSessions","Profile")>Upcoming Sessions</a>
+           <a href=@Url.Action("CompletedSessions","Profile")>Completed Sessions</a>
+           <a href=@Url.Action("Logout","Profile")>Log Out</a>
+       </div>-->
+        <!-- Sidebar Holder -->
+        <!--- <nav id="sidebar">
+        <div id="dismiss">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header">
+            <a href="" style="font-size:30px;text-align:center">Expert Advising</a>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="#homeSubmenu">My Account</a>
+
+
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Session</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li><a href=@Url.Action("UpcomingSessions", "Profile")>Upcoming Session</a></li>
+                    <li><a href=@Url.Action("CompletedSessions","Profile")>Session History</a></li>
+                    <li><a href="#">Cancelled Session</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href=@Url.Action("Edit_Profile", "Profile")>Edit Profile</a>
+            </li>
+            <li>
+                <a href="#">Favorites</a>
+            </li>
+            <li>
+                <a href="#">Settings</a>
+            </li>
+            <li>
+                <a href="#">Log Out</a>
+            </li>
+        </ul>
+
+
+    </nav>-->
+        <!-- Page Content Holder -->
+        <!----     <div id="content">
+
+         <nav class="navbar navbar-default" style="background-color:#212529">
+             <div class="container-fluid">
+
+                 <div class="navbar-header">
+                     <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                         <i class="glyphicon glyphicon-align-left"></i>
+                     </button>
+                     <a href=@Url.Action("Index", "Home") style="color:white;font-size:30px;">Expert Advising</a>
+                 </div>
+
+                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                     <ul class="nav navbar-nav navbar-right">
+
+                         <li></li>
+                         <li><a href=@Url.Action("Index", "Home") style="color:white">Home</a></li>
+                         <li><a href=@Url.Action("Index", "Browse") style="color:white">Browse</a></li>
+                         <li><a href=@Url.Action("Logout", "Profile") style="color:white">Log out</a></li>
+                     </ul>
+                 </div>
+             </div>
+         </nav>-->
+        <br />
+        <br />
+        <br />
+
+        <style>
+            .container {
+                box-shadow: 5px 10px #a7a7a7;
+            }
+        </style>
+
+        <!--My Profile Er Kaj-->
+        @{
+            string name = Model.UserInfoList[0].FirstName + " " + Model.UserInfoList[0].LastName;
+        }
+        <div class="container emp-profile">
+            <div class="row">
+
+
+
+            </div>
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-2">
+
+
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="profile-img" style="margin-left:-225px; margin-top:-25px">
+                            <!--profile photo-->
+                            <img src="@Url.Content(Model.UserInfoList[0].ProfileImage)" style="width:150px;height:150px; border-radius:50%" />
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                            <h3 style="margin-left:-180px; margin-top:-10px">
+                                @name
+                            </h3>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-8" style="float: right">
+                    <div class="row">
+                        <div class="col-md-5">
+
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-5">
+                            <label>First Name</label>
+                        </div>
+                        <!--add name syntax-->
+                        <div class="col-md-5">
+                            <p>@Model.UserInfoList[0].FirstName</p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-5">
+                            <label>Last Name</label>
+                        </div>
+                        <!--add name syntax-->
+                        <div class="col-md-5">
+                            <p>@Model.UserInfoList[0].LastName</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label>Email</label>
+                        </div>
+                        <!--add Email syntax-->
+
+                        <div class="col-md-5">
+                            <p>@Model.UserInfoList[0].UserId</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label>Wallet Status</label>
+                        </div>
+                        <!--add name syntax-->
+                        <div class="col-md-5">
+                            <p>@Model.UserInfoList[0].WalletStatus</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="overlay" style="margin-bottom:150px;"></div>
+
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!--<script type="text/javascript" src="~/Scripts/Sidenav.js"></script>-->
+
+</body>
+</html>
+

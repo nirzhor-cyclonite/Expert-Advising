@@ -1,0 +1,204 @@
+﻿@model trial7.Models.Expert
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Edit Profile</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!-- Our Custom CSS -->
+    <!-- <link rel="stylesheet" href="~/css/sidenvaigation.css">-->
+    <!-- Scrollbar Custom CSS -->
+    <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css>-->
+
+    <link href="~/css/My_profile.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+      <!--  <nav id="sidebar">
+            <div id="dismiss">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+            </div>
+
+            <div class="sidebar-header">
+                <a href="" style="font-size:30px;text-align:center">Expert Advising</a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#homeSubmenu">My Account</a>
+
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Session</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="#">Upcoming Session</a></li>
+                        <li><a href="#">Session History</a></li>
+                        <li><a href="#">cancelled Session</a></li>
+                    </ul>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Edit Profile</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="#">Basic Information</a></li>
+                        <li><a href="#">Change Password</a></li>
+                        <li><a href="#">Change Verifications</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Favorites</a>
+                </li>
+                <li>
+                    <a href="#">Settings</a>
+                </li>
+                <li>
+                    <a href="#">Log Out</a>
+                </li>
+            </ul>
+
+
+        </nav>
+
+        <!-- Page Content Holder -->
+        <!--<div id="content">
+
+            <nav class="navbar navbar-default" style="background-color:#212529">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                            <i class="glyphicon glyphicon-align-left"></i>
+                        </button>
+                        <a href="" style="color:#DEC01F;font-size:30px;padding:20px">Expert Advising</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li></li>
+                            <li><a href="https://localhost:44375/Home/Index" style="color:white">Home</a></li>
+                            <li><a href="https://localhost:44375/Browse/Index" style="color:white">Browse</a></li>
+                            <li><a href="https://localhost:44375/Profile/My_profile" style="color:white">Profile</a></li>
+                            <li><a href="https://localhost:44375/Home/Index" style="color:white">Log out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>-->
+            <!--Edit Profile er kaj-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="kisuakta">
+                            <h2>Edit Profile</h2>
+                         </div>
+                    </div>
+                </div>
+                <div class="row m-y-2">
+                    <!-- edit form column -->
+
+                    <div class="col-lg-4 pull-lg-8 text-xs-center">
+                        <img src="//placehold.it/150" class="m-x-auto img-fluid img-circle" alt="avatar" style="margin-left:-30px;"/>
+                        <h6 class="m-t-2" style="margin-left:-15px;">Upload a different photo</h6>
+                        <label class="custom-file" style="margin-top:-50px;">
+                            <input type="file" id="file" class="custom-file-input" style="">
+                            <span class="custom-file-control" >
+                            Choose File</span>
+                        </label>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                    <div class="col-lg-8">
+                    </div>
+                    <div class="col-lg-8 push-lg-4 personal-info">
+
+                        @using (Html.BeginForm())
+                        {
+                            <form role="form">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                                    
+                                    <div class="col-lg-9">
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @style =  "width: 400px" } })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                                    <div class="col-lg-9">
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @style =  "width: 400px" } })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                    <div class="col-lg-9">
+                                        @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @style =  "width: 400px" } })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                                    <div class="col-lg-9">
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @style =  "width: 400px" } })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                                    <div class="col-lg-9">
+                                        @Html.EditorFor(model=>model.ConfirmPassword, new { htmlAttributes = new { @style =  "width: 400px" } })
+                                    </div>
+                                </div>
+                                <!--here-->
+                                <br />
+                                <div style="color:white;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                        </div>
+                                        <div class="col-md-4"></div>
+
+                                        <div class="col-md-4" style="padding-left:140px;">
+                                            <input style="background-color:dodgerblue;width:100px;border-radius:50px;" type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </form>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+            <hr />
+
+        </div>
+    
+
+
+
+    <div class="overlay"></div>
+
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Sidenav.js"></script>
+</body>
+</html>
+

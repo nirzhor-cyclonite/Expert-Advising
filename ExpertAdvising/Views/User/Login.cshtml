@@ -1,0 +1,95 @@
+﻿@model trial7.Models.Userinfo
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="~/css/home.css" rel="stylesheet" />
+    <link href="~/css/home.min.css" rel="stylesheet" />
+
+    <title>Expert Advising</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/fronts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link href="~/css/user_reg.css" rel="stylesheet" />
+</head>
+<body>
+
+    @Html.Raw(TempData["msg"]);
+    @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "register-form", role = "form", id = "login-form" }))
+    {
+        <!-- Sing in  Form -->
+        <section class="signup" style="">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="row"  style="margin-top:-35px;">
+                        <div class="col-md-2">
+                            <a href="@Url.Action("Index", "Home")" style="font-size:15px;">
+                                <i class="fa fa-home" style="margin-left:7px;"></i> Home
+                            </a>
+                        </div>
+                    </div>
+                    <div class="signin-image">
+                        <figure><img src="~/images/img/signin-image.jpg" alt="sing up image"></figure>
+                        <a href=@Url.Action("Register","User") class="signup-image-link" style="font-size:18px;">Create an account</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Log In</h2>
+                        <div class="form-group" style="font-size:15px;">
+                            <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            @Html.TextBoxFor(model => model.UserId, new { type = "text", name = "Email", id = "Email", placeholder = "Your Email" })
+                            @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group" style="font-size:15px;">
+                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                            @Html.PasswordFor(model => model.Password, new { type = "password", name = "password", id = "password", placeholder = "Password" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group" style="font-size:15px;">
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                        </div>
+                        <div class="form-group form-button" style="font-size:15px;">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"  />
+                        </div>
+
+                        <div class="social-login">
+                            <span class="social-label">Or login with</span>
+                            <ul class="socials">
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    }
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

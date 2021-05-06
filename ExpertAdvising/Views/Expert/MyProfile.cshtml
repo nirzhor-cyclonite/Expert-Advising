@@ -1,0 +1,148 @@
+﻿@model trial7.Models.QueryHandler
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Collapsible sidebar using Bootstrap 3</title>
+
+
+    <link href="~/css/My_profile.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        .profile-img img {
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                }
+    </style>
+
+</head>
+<body>
+
+    <div class="wrapper">
+      
+            <!--My Profile Er Kaj-->
+            @{
+                string name = Model.ExpertList[0].FirstName + " " + Model.ExpertList[0].LastName;
+            }
+            <div class="container emp-profile">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="profile-img">
+                                <!--profile photo-->
+                                <img src=@Url.Content(Model.ExpertList[0].ProfileImage) />
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="profile-head">
+                                <h5>
+                                    @name
+                                </h5>
+                                <h6>
+                                    @Model.ExpertList[0].ExpertiseSector
+                                </h6>
+                                <p class="proile-rating">RATING : <span>@String.Format("{0:0.00}", Model.Rating)</span></p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8" style="float: right">
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>First Name</label>
+                            </div>
+                            <!--add name syntax-->
+                            <div class="col-md-5">
+                                <p>@Model.ExpertList[0].FirstName</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Last Name</label>
+                            </div>
+                            <!--add name syntax-->
+                            <div class="col-md-5">
+                                <p>@Model.ExpertList[0].LastName</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Email</label>
+                            </div>
+                            <!--add Email syntax-->
+
+                            <div class="col-md-5">
+                                <p>@Model.ExpertList[0].EmailId</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Bio</label>
+                            </div>
+                            <!--add name syntax-->
+                            <div class="col-md-5">
+                                <p>@Model.ExpertiseList[0].Bio</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Expertise Sector</label>
+                            </div>
+                            <div class="col-md-5">
+                                <p>@Model.ExpertiseList[0].ExpertiseSectors</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Wallet Status</label>
+                            </div>
+                            <!--add name syntax-->
+                            <div class="col-md-5">
+                                <p>@Model.ExpertList[0].WalletStatus</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Bank Account No.</label>
+                            </div>
+                            <!--add name syntax-->
+                            <div class="col-md-5">
+                                <p>@Model.ExpertList[0].BankAccount</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="overlay"></div>
+
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Sidenav.js"></script>
+</body>
+</html>
+

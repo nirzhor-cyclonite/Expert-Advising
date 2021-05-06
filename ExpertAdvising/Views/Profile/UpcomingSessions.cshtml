@@ -1,0 +1,134 @@
+﻿@model trial7.Models.QueryHandler
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+    <!--Side Nav css-->
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+
+
+
+    <style>
+
+        .container {
+            margin-top: 40px;
+        }
+
+        .firstSection {
+            width: 150px;
+            height: 150px;
+        }
+
+            .firstSection img {
+                width: 100%;
+                height: auto;
+                border-radius: 50%;
+            }
+
+        .thirdSection {
+            text-align: center;
+        }
+
+            .thirdSection .price, .thirdSection .callButton {
+                padding-bottom: 15px;
+            }
+
+                .thirdSection .callButton button {
+                    width: 200px;
+                }
+
+        .border {
+            margin-top: 30px;
+            border-bottom: 2px solid #6f6f6f;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        @if (Model.ExpertList.Count == 0)
+        {
+            <div class ="col-md-6"></div>
+            <div class="no-session" style="font-weight:bold;">
+                <h2>You Don't Have Any Upcoming Sessions!</h2>
+            </div>
+        }
+        else
+        {
+            for (int i = 0; i < Model.ExpertList.Count; i++)
+            {
+                <div class="row">
+
+
+                    <div class="col-md-3 firstSection">
+                        <img src="@Url.Content(Model.ExpertList[i].ProfileImage)" style="width:120px;height:120px;" />
+                    </div>
+                    <div class="col-md-6 secondSection">
+
+                        <h2>@Model.ExpertList[i].FirstName</h2>
+                        <p>
+                            @Model.SessionDetailsList[i].Brief_Description
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <div class="row thirdSection">
+
+                            <div class="col-md-12 price">
+                                <div class="col-md-5" style="margin-left:20px; padding-left: 20px;"> Total Cost:</div>
+                                <div class="col-md-6">  <div style="font-weight:bold; margin-left:-50px; padding-right:40px">@Model.SessionDetailsList[i].Cost</div></div>
+                              
+                            </div>
+
+                            <div class="col-md-12 callButton">
+                                <button type="button" class="btn btn-success">Call Now</button>
+                            </div>
+
+                            <div class="col-md-12 callButton">
+                                <h6>@Model.SessionDetailsList[i].StartTime</h6>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="border" style="margin-top: -5px"></div>
+                <br />
+            }
+        }
+
+
+
+    </div>
+
+    <div class="lowering" style="margin-bottom:300px"></div>
+    <div class="border"></div>
+
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+</body>
+</html>

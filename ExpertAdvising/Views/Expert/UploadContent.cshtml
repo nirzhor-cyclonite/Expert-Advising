@@ -1,0 +1,46 @@
+﻿@model trial7.Models.Content
+
+@{
+    ViewBag.Title = "UploadContent";
+}
+
+<h2>UploadContent</h2>
+
+@using (Html.BeginForm("UploadContent", "Expert", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Topic, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="width = 50px">
+                @Html.TextBoxFor(model => model.Topic,new { htmlAttributes = new { @class = "form-control", @style = "width: 100px"} })
+                @Html.ValidationMessageFor(model => model.Topic, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Item, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="gap" style="margin-top:5px;"></div>
+                <input type="file" name="file" />
+
+                @Html.ValidationMessageFor(model => model.Item, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    <div class="fill-space" style="margin-top:250px"></div>
+}
+

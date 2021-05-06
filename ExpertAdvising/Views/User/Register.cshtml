@@ -1,0 +1,125 @@
+﻿@model trial7.Models.Userinfo
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="~/css/home.css" rel="stylesheet" />
+    <link href="~/css/home.min.css" rel="stylesheet" />
+
+    <title>Expert Advising</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+
+    <link href="~/css/user_reg.css" rel="stylesheet" />
+    <script src="~/Scripts/main.js"></script>
+
+</head>
+<body>
+    @Html.Raw(TempData["msg"]);
+    @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "register-form", role = "form", id = "register-form" }))
+    {
+        @Html.AntiForgeryToken(){
+            <!-- Sign up form -->
+            <section class="signup">
+                <div class="container">
+                    <div class="signup-content">
+                        <div class="row" style="margin-top:-35px;">
+                            <div class="col-md-6">
+
+                            </div>
+
+                            <div class="col-md-2">
+                                <a href="@Url.Action("Index", "Home")" style="font-size:15px;">
+                                    <i class="fa fa-home" style="margin-left:7px;"></i> Home
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                        </div>
+                        <div class="signup-form">
+                            <h2 class="form-title">Sign up</h2>
+                            <div class="form-group">
+                                <label for="Firstname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                @Html.EditorFor(userinfo => userinfo.FirstName, new { type = "text", name = "first_name", id = "first_name", htmlAttributes = new { placeholder = "First Name" } })
+                                @Html.ValidationMessageFor(userinfo => userinfo.FirstName, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label for="Lastname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                @Html.EditorFor(userinfo => userinfo.LastName, new { type = "text", name = "last_name", id = "last_name", htmlAttributes = new { placeholder = "Last Name" } })
+                                @Html.ValidationMessageFor(userinfo => userinfo.LastName, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                @Html.EditorFor(userinfo => userinfo.UserId, new { type = "text", name = "email_name", id = "email_name", htmlAttributes = new { placeholder = "Email" }  })
+                                @Html.ValidationMessageFor(userinfo => userinfo.UserId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                @Html.PasswordFor(userinfo => userinfo.Password, new { type = "password", name = "password", id = "password", placeholder = "Password" })
+                                @Html.ValidationMessageFor(userinfo => userinfo.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                @Html.PasswordFor(userinfo => userinfo.Password, new { type = "password", name = "password", id = "password", placeholder = "Retype Your Password" })
+                                @Html.ValidationMessageFor(userinfo => userinfo.Password, "", new { @class = "text-danger" })
+                            </div>
+                            
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                            </div>
+                        </div>
+                        <div class="signup-image">
+                            <figure>
+                                <img src="~/images/img/signup-image.jpg" />
+                            </figure>
+                            <a href=@Url.Action("Login", "User") class="signup-image-link">I am already member</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+    }
+
+    <!-- JS -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="~/Scripts/jqBootstrapValidation.js"></script>
+    <script src="~/Scripts/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+
+    <script src="~/Scripts/home.js"></script>
+    <script src="~/Scripts/home.min.js"></script>
+
+    <script src="~/Scripts/gulpfile.js"></script>
+
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>
